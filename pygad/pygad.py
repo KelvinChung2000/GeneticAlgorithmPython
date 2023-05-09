@@ -367,7 +367,7 @@ class GA(utils.parent_selection.ParentSelection,
 
                     # In case the 'gene_space' parameter is nested, then make sure the number of its elements equals to the number of genes.
                     if self.gene_space_nested:
-                        if len(gene_space) != self.num_genes:
+                        if any([len(i) != num_genes for i in gene_space]):
                             self.valid_parameters = False
                             raise ValueError(f"When the parameter 'gene_space' is nested, then its length must be equal to the value passed to the 'num_genes' parameter. Instead, length of gene_space ({len(gene_space)}) != num_genes ({self.num_genes})")
 
@@ -449,12 +449,6 @@ class GA(utils.parent_selection.ParentSelection,
             # Round initial_population and population
             self.initial_population = self.round_genes(self.initial_population)
             self.population = self.round_genes(self.population)
-
-            # In case the 'gene_space' parameter is nested, then make sure the number of its elements equals to the number of genes.
-            if self.gene_space_nested:
-                if len(gene_space) != self.num_genes:
-                    self.valid_parameters = False
-                    raise ValueError(f"When the parameter 'gene_space' is nested, then its length must be equal to the value passed to the 'num_genes' parameter. Instead, length of gene_space ({len(gene_space)}) != num_genes ({self.num_genes})")
 
             # Validating the number of parents to be selected for mating (num_parents_mating)
             if num_parents_mating <= 0:
