@@ -345,7 +345,7 @@ class GA(utils.parent_selection.ParentSelection,
                 raise ValueError(f"The value passed to the 'gene_type' parameter must be either a single integer, floating-point, list, tuple, or numpy.ndarray but ({gene_type}) of type {type(gene_type)} found.")
 
             # Call the unpack_gene_space() method in the pygad.helper.unique.Unique class.
-            self.gene_space_unpacked = self.unpack_gene_space()
+            # self.gene_space_unpacked = self.unpack_gene_space()
 
             # Build the initial population
             if initial_population is None:
