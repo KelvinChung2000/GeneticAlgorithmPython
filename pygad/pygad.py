@@ -213,8 +213,8 @@ class GA(utils.parent_selection.ParentSelection,
                                 raise ValueError(f"The element indexed {index} of 'gene_space' with type {type(el)} cannot be empty (i.e. its length must be >= 0).")
                             else:
                                 for val in el:
-                                    if not (type(val) in [type(None)] + GA.supported_int_float_types):
-                                        raise TypeError(f"All values in the sublists inside the 'gene_space' attribute must be numeric of type int/float/None but ({val}) of type {type(val)} found.")
+                                    if not (type(val) in [type(None), type(list()), type(tuple())] + GA.supported_int_float_types):
+                                        raise TypeError(f"All values in the sublists inside the 'gene_space' attribute must be numeric of type int/float/list/tuple/None but ({val}) of type {type(val)} found.")
                             self.gene_space_nested = True
                         elif type(el) == type(None):
                             pass
